@@ -19,9 +19,9 @@ This blog is all about Python, Django and Web development, so many useful posts.
 
 {% if page.comments %}
 <script>
- var disqus_config = function () {
- this.page.url = "{{ page.url }}"
- };
+// var disqus_config = function () {
+// this.page.url = "{{ page.url }}"
+// };
  (function() { // DON'T EDIT BELOW THIS LINE
  var d = document, s = d.createElement('script');
  s.src = 'https://varjekass-com-blog.disqus.com/embed.js';
