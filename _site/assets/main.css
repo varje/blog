@@ -16,6 +16,10 @@ dl, dd, ol, ul, figure {
     margin-bottom: 0;
 }
 
+.menu {
+    margin-left: 0px !important
+    }
+
 /* footer for all pages */
 footer {
     background-color: #efefef;
