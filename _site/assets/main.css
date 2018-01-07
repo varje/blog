@@ -16,10 +16,6 @@ dl, dd, ol, ul, figure {
     margin-bottom: 0;
 }
 
-.menu {
-    margin-left: 0px !important
-    }
-
 /* footer for all pages */
 footer {
     background-color: #efefef;
@@ -68,9 +64,10 @@ figcaption {
 
 /**
  * Lists
- */
-ul, ol {
+ ul, ol {
   margin-left: 30px; }
+ */
+
 
 li > ul,
 li > ol {
