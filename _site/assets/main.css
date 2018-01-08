@@ -298,7 +298,7 @@ pre {
   padding: 30px 0; }
 
 .page-heading {
-  font-size: 36px; }
+  font-size: 36px !important; }
 
 .post-list {
   margin-left: 0;
