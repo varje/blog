@@ -12,11 +12,11 @@ I'm studying IT and working in the area as well. I feel most comfortable with Py
 
 My first code-snippet.
 {% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
+def print_hi(name):
+  return ("Hi, ", name)
+
 print_hi('Visitor')
-#=> prints 'Hi, Visitor' to STDOUT.
+# prints 'Hi, Visitor' to console.
 {% endhighlight %}
 
 {% if page.comments %}
