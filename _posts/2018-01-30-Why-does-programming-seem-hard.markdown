@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Why does programming seem hard to many people?"
-date:   2017-12-05 19:49:14 +0200
+date:   2018-01-30 19:49:14 +0200
 categories: welcome
 comments: true
 ---

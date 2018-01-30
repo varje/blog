@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Django Tutorials"
-date:   2017-12-05 21:49:14 +0200
+date:   2017-12-20 21:49:14 +0200
 categories: django
 comments: true
 ---
