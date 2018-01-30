@@ -1,12 +1,26 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/blog/" rel="alternate" type="text/html" /><updated>2017-12-05T20:42:45+02:00</updated><id>http://localhost:4000/blog/</id><title type="html">Some small blogposts about programming</title><subtitle>A blog about programming and IT. Author Varje Kass.</subtitle><entry><title type="html">Welcome to my blog!</title><link href="http://localhost:4000/blog/welcome/2017/12/05/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to my blog!" /><published>2017-12-05T19:49:14+02:00</published><updated>2017-12-05T19:49:14+02:00</updated><id>http://localhost:4000/blog/welcome/2017/12/05/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/blog/welcome/2017/12/05/welcome-to-jekyll.html">&lt;p&gt;Welcome!&lt;/p&gt;
-
-&lt;p&gt;I’ll write about programming and IT. Some posts will be more like tutorials and others my personal opinion.
-I’m studying IT and working in the area as well. I feel most comfortable with Python and Django, but I have experience with JavaScript, Java and PHP as well.&lt;/p&gt;
-
-&lt;p&gt;My first code-snippet.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Visitor'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Visitor' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name></name></author><summary type="html">Welcome!</summary></entry></feed>
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+	<channel>
+		<title>{{ site.name | xml_escape }}</title>
+		<description>{% if site.description %}{{ site.description | xml_escape }}{% endif %}</description>
+		<link>{{ site.url }}</link>
+		<atom:link href="{{ site.url }}/{{ page.path }}" rel="self" type="application/rss+xml" />
+		<lastBuildDate>{% for post in site.posts limit:1 %}{{ post.date | date_to_rfc822 }}{% endfor %}</lastBuildDate>
+		{% for post in site.posts limit:10 %}
+			<item>
+				<title>{{ post.title | xml_escape }}</title>
+				{% if post.author.name %}
+					<dc:creator>{{ post.author.name | xml_escape }}</dc:creator>
+				{% endif %}
+				{% if post.excerpt %}
+					<description>{{ post.excerpt | xml_escape }}</description>
+				{% else %}
+					<description>{{ post.content | xml_escape }}</description>
+				{% endif %}
+				<pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
+				<link>{{ site.url }}{{ post.url }}</link>
+				<guid isPermaLink="true">{{ site.url }}{{ post.url }}</guid>
+			</item>
+		{% endfor %}
+	</channel>
+</rss>
