@@ -2,7 +2,7 @@
 layout: post
 title:  "Why does programming seem hard to many people?"
 date:   2018-01-30 19:49:14 +0200
-categories: welcome
+categories: discussion
 comments: true
 ---
 I'm 25, when I was young we didn't have a computer and I got ethernet at end of basic school. My first programming experience was in university,

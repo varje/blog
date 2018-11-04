@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>
+    
+      Django(1.11) models introduction
+    
+  </title>
+  <meta name="description" content="So a little overview of Django models and its’ instances. Django model is basically like a database table. To create one you need to change models.py and adm...">
+
+  <link rel="stylesheet" href="/blog/assets/main.css">
+  <link rel="canonical" href="http://localhost:4000/blog/django/2018/11/03/Django(1.11)-models-introduction.html">
+  <link rel="shortcut icon" type="image/png" href="/blog/favicon.png">
+  <link rel="shortcut icon" type="image/ico" href="/blog/favicon.ico">
+  <!-- CDN imports -->
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- jQuery UI -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <!-- Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+  
+</head>
+
+
+  <body>
+
+    <!-- Navigation -->
+<header class="site-header" role="banner" style="background-color:#000;">
+  <nav class="navbar navbar-expand-lg navbar-dark" id="mainNav">
+    <div style="font-family:'Alex Brush',Brush Script MT,Brush Script Std,Helvetica, Arial,cursive;color:#fed136;background-color:#000;">
+      <h2>
+        <a class="navbar-brand js-scroll-trigger brush-font" href="https://www.varjekass.com" style="color:#fed136;text-decoration:none;font-size:28px;">
+           &nbsp; &nbsp; &nbsp; Back to homepage
+         </a>
+         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+         <a href="http://www.varjekass.com/blog" style="font-family:Arial;color:#fff;text-decoration:none;font-size:14px;">BLOG MAINPAGE</a>
+      </h2>
+    </div>
+  </nav>
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Django(1.11) models introduction</h1>
+    <p class="post-meta">
+      <time datetime="2018-11-03T19:49:14+02:00" itemprop="datePublished">
+        
+        Nov 3, 2018
+      </time>
+      </p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>So a little overview of Django models and its’ instances.
+Django model is basically like a database table. To create one you need to change models.py and admin.py file. In models.py you declare your models and in admin.py you import the created models to generate tables in admin interface. To start using models you need to make “makemigrations” and “migrate” in console. If you haven’t created a superuser yet, you also need to do that to access Django admin panel.</p>
+
+<p>Models.py:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="c1"># Firstly you need to import models from Django database.</span>
+  <span class="n">from</span> <span class="n">django</span><span class="p">.</span><span class="nf">db</span> <span class="n">import</span> <span class="n">models</span>
+
+  <span class="c1"># Then for each model define a Class:</span>
+  <span class="k">class</span> <span class="nc">ModelName</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="no">Model</span><span class="p">):</span>
+      <span class="n">to</span> <span class="n">something</span><span class="o">..</span>
+      <span class="c1"># Then inside the class define fields (which is basically column of the database):</span>
+      <span class="c1"># Easiest is the charfield, which takes text as input:</span>
+      <span class="nb">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="no">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span></code></pre></figure>
+
+<p>Now I’ll go over different models instances I have used:</p>
+
+<p>1) Foreign Key - ForeignKey can be a second model or a user</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="n">author</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="no">ForeignKey</span><span class="p">(</span><span class="s1">'auth.User'</span><span class="p">)</span>
+  <span class="n">campaign</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="no">ForeignKey</span><span class="p">(</span><span class="no">FirstModelName</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="no">True</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="no">True</span><span class="p">)</span></code></pre></figure>
+
+<p>2) Int and char and text - number; short text; long text. Default is the value that is saved if you don’t change anything, can also be default = ‘’”</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="nb">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="no">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+  <span class="n">description</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="no">TextField</span><span class="p">()</span>
+  <span class="n">number</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="no">IntegerField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s2">"25"</span><span class="p">)</span></code></pre></figure>
+
+<p>3) File upload:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="n">file</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="no">FileField</span><span class="p">(</span><span class="n">upload_to</span><span class="o">=</span><span class="s1">'documents/'</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span></code></pre></figure>
+
+<p>4) Options: choose one</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="no">CHOICES</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="s1">'A'</span><span class="p">,</span> <span class="s1">'Description of A'</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">'B'</span><span class="p">,</span> <span class="s1">'Description of B'</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">'C'</span><span class="p">,</span> <span class="s1">'Description of C'</span><span class="p">)</span>
+  <span class="p">)</span>
+  <span class="n">dropdown</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="no">CharField</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="no">CHOICES</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span></code></pre></figure>
+
+<p>5) Checkbox options:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="n">checkboxes</span> <span class="o">=</span> <span class="no">MultiSelectField</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="no">CHOICES</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span></code></pre></figure>
+
+<p>This is not a default field, needs to be installed in console:
+pip install django-multiselectfield</p>
+
+<p>6) datefield:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="n">from</span> <span class="n">django</span><span class="p">.</span><span class="nf">utils</span> <span class="n">import</span> <span class="n">timezone</span>
+  <span class="n">created_date</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="no">DateField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">timezone</span><span class="p">.</span><span class="nf">now</span><span class="p">)</span></code></pre></figure>
+
+<p>I also have methods defined in my class.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="k">def</span> <span class="nf">publish</span><span class="p">(</span><span class="nb">self</span><span class="p">):</span>
+    <span class="nb">self</span><span class="p">.</span><span class="nf">published_date</span> <span class="o">=</span> <span class="n">timezone</span><span class="p">.</span><span class="nf">now</span><span class="p">()</span>
+    <span class="nb">self</span><span class="p">.</span><span class="nf">save</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="nb">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">self</span><span class="p">.</span><span class="nf">name</span></code></pre></figure>
+
+<p>admin.py file:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="n">from</span> <span class="p">.</span><span class="nf">models</span> <span class="n">import</span> <span class="no">FirstModel</span><span class="p">,</span> <span class="no">SecondModel</span>
+  <span class="c1"># have to register each model on separate row</span>
+  <span class="n">admin</span><span class="p">.</span><span class="nf">site</span><span class="p">.</span><span class="nf">register</span><span class="p">(</span><span class="no">FirstModel</span><span class="p">)</span>
+  <span class="n">admin</span><span class="p">.</span><span class="nf">site</span><span class="p">.</span><span class="nf">register</span><span class="p">(</span><span class="no">SecondModel</span><span class="p">)</span></code></pre></figure>
+
+<p>In console: (Windows)
+python manage.py makemigrations
+python manage.py migrate
+python manage.py createsuperuser
+username:
+e-mail:
+password:
+python manage.py runserver</p>
+
+<p>In browser:
+http://127.0.0.1:8000/admin/
+Log in and start adding data.</p>
+
+<hr />
+
+<p><a href="https://docs.djangoproject.com/en/1.11/topics/db/models/">Django models documentation</a></p>
+
+<div id="disqus_thread"></div>
+<script>
+
+ /**
+ *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+ *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+ /*
+ var disqus_config = function () {
+ this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+ this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+ };
+ */
+ (function() { // DON'T EDIT BELOW THIS LINE
+ var d = document, s = d.createElement('script');
+ s.src = 'https://varjekass-com-blog.disqus.com/embed.js';
+ s.setAttribute('data-timestamp', +new Date());
+ (d.head || d.body).appendChild(s);
+ })();
+ </script>
+
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  </div>
+
+  
+</article>
+
+      </div>
+    </main>
+
+    <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12" style="text-align:center;">
+          <div class="intro-lead-in" style="color:#fed136;text-align:center;">
+              <a style="color:#000;" href="https://github.com/varje" target="_blank"><i class="fa fa-github"></i></a>
+              <a style="color:#000;" href="https://www.linkedin.com/in/varje-kass/" target="_blank"><i class="fa fa-linkedin"></i></a>
+              <a style="color:#000;" href="https://mail.google.com/mail/?view=cm&fs=1&to=varjekass@gmail.com" target="_blank"><i class="fa fa-pencil"></i></a>
+              <a style="color:#000;" href="https://www.facebook.com/varje.kass" target="_blank"><i class="fa fa-facebook"></i></a>
+              <a style="color:#000;" href="skype:varje..?add" target="_blank"><i class="fa fa-skype"></i></a>
+          </div>
+          <span style="text-align:center">Contact: varjekass@gmail.com</span>
+          <br>
+          <span style="text-align:center" class="copyright">&copy; Copyright Varje Kass 2018</span>
+          <br>
+          <span style="text-align:center" class="copyright">Blog powered by Jekyll.</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  </body>
+
+</html>

@@ -1,0 +1,123 @@
+---
+layout: post
+title:  "Django(1.11) models introduction"
+date:   2018-11-03 19:49:14 +0200
+categories: django
+comments: true
+---
+
+So a little overview of Django models and its' instances.
+Django model is basically like a database table. To create one you need to change models.py and admin.py file. In models.py you declare your models and in admin.py you import the created models to generate tables in admin interface. To start using models you need to make "makemigrations" and "migrate" in console. If you haven't created a superuser yet, you also need to do that to access Django admin panel.
+
+Models.py:
+{% highlight ruby %}
+  # Firstly you need to import models from Django database.
+  from django.db import models
+
+  # Then for each model define a Class:
+  class ModelName(models.Model):
+      to something..
+      # Then inside the class define fields (which is basically column of the database):
+      # Easiest is the charfield, which takes text as input:
+      name = models.CharField(max_length=200)
+{% endhighlight %}
+
+Now I'll go over different models instances I have used:
+
+1) Foreign Key - ForeignKey can be a second model or a user
+{% highlight ruby %}
+  author = models.ForeignKey('auth.User')
+  campaign = models.ForeignKey(FirstModelName, blank=True, null=True)
+{% endhighlight %}
+
+2) Int and char and text - number; short text; long text. Default is the value that is saved if you don't change anything, can also be default = ''"
+{% highlight ruby %}
+  name = models.CharField(max_length=200)
+  description = models.TextField()
+  number = models.IntegerField(default="25")
+{% endhighlight %}
+
+3) File upload:
+{% highlight ruby %}
+  file = models.FileField(upload_to='documents/', default="")
+{% endhighlight %}
+
+4) Options: choose one
+{% highlight ruby %}
+  CHOICES = (
+    ('A', 'Description of A'),
+    ('B', 'Description of B'),
+    ('C', 'Description of C')
+  )
+  dropdown = models.CharField(choices=CHOICES, max_length=50, default="")
+{% endhighlight %}
+
+5) Checkbox options:
+{% highlight ruby %}
+  checkboxes = MultiSelectField(choices=CHOICES, default="")
+{% endhighlight %}
+This is not a default field, needs to be installed in console:
+pip install django-multiselectfield
+
+6) datefield:
+{% highlight ruby %}
+  from django.utils import timezone
+  created_date = models.DateField(default=timezone.now)
+{% endhighlight %}
+
+I also have methods defined in my class.
+{% highlight ruby %}
+  def publish(self):
+    self.published_date = timezone.now()
+    self.save()
+    def __str__(self):
+    return self.name
+{% endhighlight %}
+
+admin.py file:
+{% highlight ruby %}
+  from .models import FirstModel, SecondModel
+  # have to register each model on separate row
+  admin.site.register(FirstModel)
+  admin.site.register(SecondModel)
+{% endhighlight %}
+
+In console: (Windows)
+python manage.py makemigrations
+python manage.py migrate
+python manage.py createsuperuser
+username:
+e-mail:
+password:
+python manage.py runserver
+
+In browser:
+http://127.0.0.1:8000/admin/
+Log in and start adding data.
+
+________
+
+[Django models documentation](https://docs.djangoproject.com/en/1.11/topics/db/models/)
+
+{% if page.comments %}
+ <div id="disqus_thread"></div>
+ <script>
+
+ /**
+ *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+ *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+ /*
+ var disqus_config = function () {
+ this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+ this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+ };
+ */
+ (function() { // DON'T EDIT BELOW THIS LINE
+ var d = document, s = d.createElement('script');
+ s.src = 'https://varjekass-com-blog.disqus.com/embed.js';
+ s.setAttribute('data-timestamp', +new Date());
+ (d.head || d.body).appendChild(s);
+ })();
+ </script>
+ <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+{% endif %}
