@@ -19,8 +19,8 @@ description: >- # this means to ignore newlines until "baseurl:"
   A blog about programming and IT. Author Varje Kass.
 github_username:  varje
 baseurl: "/blog"
-production_url : http://varje.github.io.com/blog
-BASE_PATH : http://varjekass.com/blog
+production_url : http://varje.github.io/blog
+BASE_PATH : http://varje.github.io
 # Build settings
 markdown: kramdown
 theme: minima
