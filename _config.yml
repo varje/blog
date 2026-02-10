@@ -13,10 +13,10 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Varje Kass | Blog
-email: varjekass@gmail.com
+title: Varje Kivila | Blog
+email: varjekivila@gmail.com
 description:
-  A blog about programming and IT. Author Varje Kass.
+  A blog about programming and IT. Author Varje Kivila.
 github_username:  varje
 baseurl: "/blog"
 production_url : http://varje.github.io/blog

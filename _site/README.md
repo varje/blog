@@ -12,12 +12,12 @@ bundle install
 bundle exec jekyll serve
 ```
 
-Site runs at: http://localhost:4000
+Site runs at: http://localhost:4000/blog/
 
 ### Adding new post
 1. Create a file in _posts: 
 ```bash
-YYYY-MM-DD-title.md
+YYYY-MM-DD-title.markdown
 ```
 
 1. Build:
