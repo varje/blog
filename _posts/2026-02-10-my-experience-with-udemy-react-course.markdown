@@ -19,25 +19,4 @@ In summary, the Udemy React.js course was a solid learning accelerator, not a co
 If you’re self-motivated and willing to go beyond the videos, a Udemy React course is absolutely worth it. Just don’t expect it to replace hands-on experience — it works best when paired with real problems and real code.
 
 
-{% if page.comments %}
- <div id="disqus_thread"></div>
- <script>
-
- /**
- *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
- *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
- /*
- var disqus_config = function () {
- this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
- this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
- };
- */
- (function() { // DON'T EDIT BELOW THIS LINE
- var d = document, s = d.createElement('script');
- s.src = 'https://varjekass-com-blog.disqus.com/embed.js';
- s.setAttribute('data-timestamp', +new Date());
- (d.head || d.body).appendChild(s);
- })();
- </script>
- <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-{% endif %}
+{% include comment_area.html %}

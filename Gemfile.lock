@@ -166,7 +166,7 @@ PLATFORMS
 
 DEPENDENCIES
   jekyll (~> 4.3)
-  minima (~> 2.0)
+  minima (~> 2.5.2)
   tzinfo-data
 
 CHECKSUMS

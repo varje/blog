@@ -19,6 +19,23 @@ Site runs at: http://localhost:4000/blog/
 ```bash
 YYYY-MM-DD-title.markdown
 ```
+1. Add header:
+```bash
+---
+layout: post
+title:  "Title of your post"
+date:   YYYY-MM-DD HH:MM:SS ±HHMM
+categories: category
+comments: true
+---
+```
+
+1. Add your blog post text
+
+1. Include comment area
+```bash
+{% include comment_area.html %}
+```
 
 1. Build:
 ```bash

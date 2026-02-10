@@ -25,18 +25,5 @@ Tutorial about creating blog in Django. Useful for getting familiar with forms a
 This blog is all about Python, Django and Web development, so many useful posts. I particularly liked posts about testing, file upload and user registration.
 
 
-{% if page.comments %}
- <div id="disqus_thread"></div>
-<script>
-// var disqus_config = function () {
-// this.page.url = "{{ page.url }}"
-// };
- (function() { // DON'T EDIT BELOW THIS LINE
- var d = document, s = d.createElement('script');
- s.src = 'https://varjekass-com-blog.disqus.com/embed.js';
- s.setAttribute('data-timestamp', +new Date());
- (d.head || d.body).appendChild(s);
- })();
- </script>
- <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-{% endif %}
+
+{% include comment_area.html %}
