@@ -34,7 +34,7 @@ Visual: Job Search Statistics Overview
 The following chart summarizes the trajectory of my applications.
 It highlights the volume of effort required to reach that single, successful job offer in today's climate.
 
-![Job hunt graph](graph.png "Job Search Overview")
+![Job hunt gaph]({{ site.baseurl }}/graph.png)
 
 
 {% include comment_area.html %}
