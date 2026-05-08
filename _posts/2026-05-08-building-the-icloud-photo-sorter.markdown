@@ -56,7 +56,7 @@ The application follows a structured four-stage process to ensure data integrity
 4. **Sorting Folders:** The engine maps the iCloud metadata to the local file system. It physically moves or copies the images from the "flat" iCloud download folder into a structured directory tree that mirrors the user's iPhone organization.
 
 ### Conclusion
-This project successfully turned a major digital organization headache into a streamlined, automated tool. By bridging the gap between iCloud’s tagging system and the Windows file structure, I was able to deliver a solution that saves users hours of manual sorting.
+This project successfully turned a major digital organization headache into a streamlined, automated tool. By bridging the gap between iCloud’s tagging system and the Windows file structure, we were able to deliver a solution that saves users hours of manual sorting.
 It was a rewarding way to wrap up the TalTech training, proving that a senior-level approach can make even the messiest data feel manageable.
 
 
